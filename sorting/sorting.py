@@ -1,5 +1,6 @@
 
 from timer import timeit
+from random import randrange
 
 # @timeit
   
@@ -75,6 +76,54 @@ def merge_sort(basket: list) -> None:
       lss = insertion_sort(lss + rss[i:i+1])
   
   return lss
+
+def quick_sort(basket: list) -> None:
+  """Sorts a list in ascending order, O(n log n)"""
+
+  # Base cases
+  if len(basket) <= 1:
+    return basket
+
+  # Choose random element to order around
+  divider_index = randrange(0, len(basket) - 1)
+  divider_index = len(basket) - 1
+  divider_value = basket[divider_index]
+
+  # Adjustment for shifted list to ensure iteration over all values
+  adjustment = 0
+
+  # Iterate through all other items, sorting lower or higher than chosen element
+  for i in range(len(basket)):
+    j = i + adjustment
+    if j == divider_index:
+      continue
+
+    value = basket[j]
+    if value <= divider_value and j < divider_index:
+      continue
+    elif value >= divider_value and j > divider_index:
+      continue
+    elif value > divider_value and j < divider_index:
+      basket = basket[0:j] + basket[j+1: divider_index] + [divider_value] + [value] + basket[divider_index+1:]
+      divider_index -= 1
+      adjustment -= 1
+    elif value < divider_value and j > divider_index:
+      basket = basket[0:divider_index] + [value] + basket[divider_index:j] + basket[j+1:]
+      divider_index += 1
+      adjustment += 1  
+
+  # Split partially sorted list about chosen element
+  ls = basket[0:divider_index] 
+  rs = basket[divider_index+1:]
+  # Recursively call for each side and then merge
+  lss = quick_sort(ls) 
+  rss = quick_sort(rs)
+
+  return lss + [divider_value] + rss
+
+
+
+
 
       
 
