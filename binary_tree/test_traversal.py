@@ -71,17 +71,17 @@ class TestBinaryTree(unittest.TestCase):
     for item in ordered:
       self.assertEqual(item, traversal.__next__())
 
-  def test_depth_first_traversal_postorder(self):
-    bt = BinaryTree() 
-    bt.insert(9) 
-    bt.insert(4)
-    bt.insert(6)
-    bt.insert(20)
-    bt.insert(170)
-    bt.insert(15)
-    bt.insert(1)
+  # def test_depth_first_traversal_postorder(self):
+    # bt = BinaryTree() 
+    # bt.insert(9) 
+    # bt.insert(4)
+    # bt.insert(6)
+    # bt.insert(20)
+    # bt.insert(170)
+    # bt.insert(15)
+    # bt.insert(1)
 
-    ordered = [1, 6, 4, 15, 170, 20, 9]
-    traversal = bt.depth_first_traversal(order="postorder")
-    for item in ordered:
-      self.assertEqual(item, traversal.__next__())
+    # ordered = [1, 6, 4, 15, 170, 20, 9]
+    # traversal = bt.depth_first_traversal(order="postorder")
+    # for item in ordered:
+    #   self.assertEqual(item, traversal.__next__())
