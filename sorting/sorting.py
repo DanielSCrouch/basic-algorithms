@@ -5,7 +5,7 @@ from random import randrange
 # @timeit
   
 def bubble_sort(basket: list) -> None:
-  """Sorts a list in ascending order, O(n^2)"""
+  """Sorts a list in ascending order, O(n^2) - Best O(n)"""
   sorted = False 
   while not sorted:
     sorted = True
@@ -36,7 +36,10 @@ def selection_sort(basket: list) -> None:
 
 
 def insertion_sort(basket: list) -> list: 
-  """Sorts a list in ascending order, O(n^2)"""
+  """
+  Sorts a list in ascending order, O(n^2) - Best O(n)
+  Optimised for small and/or partially sorted lists.
+  """
   for i in range(1, len(basket)):
 
     # If next item is bigger do nothing
@@ -57,7 +60,10 @@ def insertion_sort(basket: list) -> list:
 
 
 def merge_sort(basket: list) -> None:
-  """Sorts a list in ascending order, O(n log n)"""
+  """
+  Sorts a list in ascending order, O(n log n),
+  Requires O(n) space complexity.
+  """
   if len(basket) == 1:
     return basket
 
@@ -78,9 +84,11 @@ def merge_sort(basket: list) -> None:
   return lss
 
 def quick_sort(basket: list) -> None:
-  """Sorts a list in ascending order, O(n log n)"""
-
-  # Base cases
+  """
+  Sorts a list in ascending order, O(n^2) - Best O(n log n) depedning on pivot,
+  Requires O(log(n) space complexity.
+  """
+  # Recursion base cases
   if len(basket) <= 1:
     return basket
 
